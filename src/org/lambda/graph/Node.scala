@@ -10,15 +10,17 @@ case class Node[T](_id: Int, _data: T) {
   final val id: Int = _id
   private val edges: HashSet[Int] = new HashSet[Int]()
 
-  def getId(): Int = id
+  def getId() = id
 
-  def getData(): T = data
+  def getData() = data
 
-  def addEdge(id: Int) = edges += id
-  def getEdges(): Array[Int] = edges.toArray
-  def getDegree(): Int = edges.size
+  def addEdge(eid: Int) = edges += eid
+
+  def getEdges() = edges.toArray
+
+  def getDegree() = edges.size
 
   def toStr() = "Node[" + id + "]=" + data + " degree=" + getDegree() + " edges:"
 
-  def removeEdge(id: Int) = edges.remove(id)
+  def removeEdge(eid: Int) = edges.remove(eid)
 }

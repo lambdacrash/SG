@@ -9,8 +9,16 @@ case class Edge[T](_id: Int, _data: T, _from: Int, _to: Int) {
   private val from: Int = _from
   private val to: Int = _to
 
-  def getId(): Int = id
-  def getData(): T = data
-  def getFromId(): Int = from
-  def getToId(): Int = to
+  def getId() = id
+
+  def getData() = data
+
+  def getFromId() = from
+
+  def getToId() = to
+
+  def getOther(nid: Int): Int = {
+    if (from == nid) return to
+    else return from
+  }
 }
