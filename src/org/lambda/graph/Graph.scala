@@ -13,6 +13,7 @@ case class Graph[U](_directed: Boolean) {
   private var nodeCount: Int = 0
   private var edgeCount: Int = 0
 
+
   def getNodeCount() = nodeCount
 
   def getEdgeCount() = edgeCount
