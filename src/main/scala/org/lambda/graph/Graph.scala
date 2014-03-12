@@ -10,13 +10,11 @@ case class Graph[U](_directed: Boolean) {
   private val directed: Boolean = _directed
   private val nodes: HashMap[Int, Node[U]] = new HashMap[Int, Node[U]]
   private val edges: HashMap[Int, Edge[U]] = new HashMap[Int, Edge[U]]
-  private var nodeCount: Int = 0
-  private var edgeCount: Int = 0
 
 
-  def getNodeCount() = nodeCount
+  def getNodeCount() = nodes.size
 
-  def getEdgeCount() = edgeCount
+  def getEdgeCount() = edges.size
 
   def +=(e: Edge[U]) = addEdge(e)
 
@@ -76,7 +74,6 @@ case class Graph[U](_directed: Boolean) {
 
   def addNode(node: Node[U]): Boolean = {
     if (node == null || nodes.contains(node.getId())) return false
-    nodeCount += 1
     nodes += (node.getId() -> node)
     return true
   }
@@ -88,7 +85,6 @@ case class Graph[U](_directed: Boolean) {
 
   def addEdge(e: Edge[U]): Boolean = {
     if (e == null) return false
-    edgeCount += 1
     edges += (e.getId() -> e)
     if (directed) {
       nodes(e.getFromId()).addEdge(e.getId())
@@ -136,7 +132,6 @@ case class Graph[U](_directed: Boolean) {
       toRemove.foreach {
         case (e: Edge[U]) => edges.remove(e.getId())
       }
-      nodeCount -= 1
       nodes -= nid
       return true
     }
@@ -155,7 +150,6 @@ case class Graph[U](_directed: Boolean) {
     edges -= eid;
     u.removeEdge(eid)
     v.removeEdge(eid)
-    edgeCount -= 1
     return true
   }
 
