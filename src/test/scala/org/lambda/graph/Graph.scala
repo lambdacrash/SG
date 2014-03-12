@@ -1,26 +1,16 @@
 package org.lambda.graph
 
-import org.scalatest.Matchers
-import collection.mutable.Stack
-import org.scalatest._
+import org.scalatest.junit.JUnitRunner
+import org.scalatest.FunSuite
+import org.junit.runner.RunWith
 
 /**
  * Created by bonfroy on 06/03/14.
  */
-class Graph extends FlatSpec with Matchers {
-  "A Stack" should "pop values in last-in-first-out order" in {
-    val stack = new Stack[Int]
-    stack.push(1)
-    stack.push(2)
-    stack.pop() should be(2)
-    stack.pop() should be(1)
+@RunWith(classOf[JUnitRunner])
+class Graph extends FunSuite {
+  test("TwoPlusTwo") {
+    val twoPlusTwo = 2 + 2
+    assert(twoPlusTwo == 4)
   }
-
-  it should "throw NoSuchElementException if an empty stack is popped" in {
-    val emptyStack = new Stack[Int]
-    a[NoSuchElementException] should be thrownBy {
-      emptyStack.pop()
-    }
-  }
-
 }
